@@ -44,6 +44,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GrowPole"",
+                    ""type"": ""Button"",
+                    ""id"": ""e3eee83b-a8da-4319-8d41-8ce02fd0681e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -123,6 +132,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3a22bd5-09ae-4f1c-a32b-7460ea8074a9"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GrowPole"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -133,6 +153,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_BaseMovement = asset.FindActionMap("BaseMovement", throwIfNotFound: true);
         m_BaseMovement_Jump = m_BaseMovement.FindAction("Jump", throwIfNotFound: true);
         m_BaseMovement_Move = m_BaseMovement.FindAction("Move", throwIfNotFound: true);
+        m_BaseMovement_GrowPole = m_BaseMovement.FindAction("GrowPole", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -196,12 +217,14 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IBaseMovementActions> m_BaseMovementActionsCallbackInterfaces = new List<IBaseMovementActions>();
     private readonly InputAction m_BaseMovement_Jump;
     private readonly InputAction m_BaseMovement_Move;
+    private readonly InputAction m_BaseMovement_GrowPole;
     public struct BaseMovementActions
     {
         private @PlayerControls m_Wrapper;
         public BaseMovementActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_BaseMovement_Jump;
         public InputAction @Move => m_Wrapper.m_BaseMovement_Move;
+        public InputAction @GrowPole => m_Wrapper.m_BaseMovement_GrowPole;
         public InputActionMap Get() { return m_Wrapper.m_BaseMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -217,6 +240,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @GrowPole.started += instance.OnGrowPole;
+            @GrowPole.performed += instance.OnGrowPole;
+            @GrowPole.canceled += instance.OnGrowPole;
         }
 
         private void UnregisterCallbacks(IBaseMovementActions instance)
@@ -227,6 +253,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @GrowPole.started -= instance.OnGrowPole;
+            @GrowPole.performed -= instance.OnGrowPole;
+            @GrowPole.canceled -= instance.OnGrowPole;
         }
 
         public void RemoveCallbacks(IBaseMovementActions instance)
@@ -248,5 +277,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnJump(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnGrowPole(InputAction.CallbackContext context);
     }
 }

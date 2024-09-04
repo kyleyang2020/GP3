@@ -14,6 +14,11 @@ public class PlayerController : MonoBehaviour
     private PlayerControls playerControls;
     private Rigidbody2D rb;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private GameObject pole;
+    [SerializeField] private Vector3 growPole;
+    private Vector3 ogPoleSize = new Vector3(1,1,1);
+    private int maxGrow = 3;
+    private int currentGrow = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,14 +33,38 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    private bool IsGrounded()
+    {
+        return false;
+    }
+
+    // jumps then resets the pole size
     private void OnJump()
     {
-        Debug.Log("jump");
         rb.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+        pole.transform.localScale = ogPoleSize;
+        currentGrow = 0;
     }
 
     private void OnMove(InputValue inputValue)
     {
-        rb.velocity = inputValue.Get<Vector2>() * moveSpeed;
+        if(currentGrow > 0)
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
+        else
+        {
+            rb.velocity = inputValue.Get<Vector2>() * moveSpeed;
+        }
+    }
+
+    private void OnGrowPole()
+    {
+        if(currentGrow < maxGrow) 
+        {
+            pole.transform.localScale += growPole;
+            currentGrow++;
+        }
+        
     }
 }
