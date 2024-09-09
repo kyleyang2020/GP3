@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private GameObject pole;
     [SerializeField] private Vector3 growPole;
-    private Vector3 ogPoleSize = new Vector3(1,1,1);
+    private Vector3 ogPoleSize = new Vector3((float)0.5,2,1);
     private int maxGrow = 3;
     private int currentGrow = 0;
 
