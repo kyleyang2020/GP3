@@ -17,8 +17,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject pole;
     [SerializeField] private Vector3 growPole;
     private Vector3 ogPoleSize = new Vector3((float)0.5,2,1);
-    private int maxGrow = 3;
+    private int maxGrow = 6;
     private int currentGrow = 0;
+    private int jump = 1;
+    private int currentjump = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -44,18 +46,18 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
         pole.transform.localScale = ogPoleSize;
         currentGrow = 0;
+        currentjump = 1;
     }
 
     private void OnMove(InputValue inputValue)
     {
+        /*
         if(currentGrow > 0)
         {
             rb.velocity = new Vector2(0, 0);
         }
-        else
-        {
-            rb.velocity = inputValue.Get<Vector2>() * moveSpeed;
-        }
+        */
+        rb.velocity = inputValue.Get<Vector2>() * moveSpeed;
     }
 
     private void OnGrowPole()
