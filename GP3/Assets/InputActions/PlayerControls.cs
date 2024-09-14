@@ -24,7 +24,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""BaseMovement"",
+            ""name"": ""BaseMovement2D"",
             ""id"": ""85c6d21f-6a80-405a-9d1f-cb3da3a82729"",
             ""actions"": [
                 {
@@ -145,15 +145,143 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""BaseMovement3D"",
+            ""id"": ""c76208a6-c965-4646-9c22-9e62cbe69a8f"",
+            ""actions"": [
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""49ca3d43-21b4-45e8-8733-4c0216729fba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""4c0dd813-8232-48b3-925b-e2351dff8136"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GrowPole"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f9b6a7a-8c11-4a30-8967-254e9b34234b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""666d23a9-7a88-4922-bed9-3b852a87de9e"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9e44d8d-ae64-4db7-a57d-52c5a3b685fc"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""ab10f72d-2177-48b9-bb6b-2c905df1b0ab"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""6d0bc771-aa6c-48c7-abc2-28c76a830bc4"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""46269892-4320-496d-81e6-5a820a2ca70a"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""f88fa6cc-b3b0-4a07-a486-a391ae8b3ddc"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4d65c520-03a4-4d38-85bd-60985c2fe4a5"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""09e5deb7-6fe7-432e-801b-d2e27e8584c3"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GrowPole"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // BaseMovement
-        m_BaseMovement = asset.FindActionMap("BaseMovement", throwIfNotFound: true);
-        m_BaseMovement_Jump = m_BaseMovement.FindAction("Jump", throwIfNotFound: true);
-        m_BaseMovement_Move = m_BaseMovement.FindAction("Move", throwIfNotFound: true);
-        m_BaseMovement_GrowPole = m_BaseMovement.FindAction("GrowPole", throwIfNotFound: true);
+        // BaseMovement2D
+        m_BaseMovement2D = asset.FindActionMap("BaseMovement2D", throwIfNotFound: true);
+        m_BaseMovement2D_Jump = m_BaseMovement2D.FindAction("Jump", throwIfNotFound: true);
+        m_BaseMovement2D_Move = m_BaseMovement2D.FindAction("Move", throwIfNotFound: true);
+        m_BaseMovement2D_GrowPole = m_BaseMovement2D.FindAction("GrowPole", throwIfNotFound: true);
+        // BaseMovement3D
+        m_BaseMovement3D = asset.FindActionMap("BaseMovement3D", throwIfNotFound: true);
+        m_BaseMovement3D_Jump = m_BaseMovement3D.FindAction("Jump", throwIfNotFound: true);
+        m_BaseMovement3D_Move = m_BaseMovement3D.FindAction("Move", throwIfNotFound: true);
+        m_BaseMovement3D_GrowPole = m_BaseMovement3D.FindAction("GrowPole", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -212,28 +340,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // BaseMovement
-    private readonly InputActionMap m_BaseMovement;
-    private List<IBaseMovementActions> m_BaseMovementActionsCallbackInterfaces = new List<IBaseMovementActions>();
-    private readonly InputAction m_BaseMovement_Jump;
-    private readonly InputAction m_BaseMovement_Move;
-    private readonly InputAction m_BaseMovement_GrowPole;
-    public struct BaseMovementActions
+    // BaseMovement2D
+    private readonly InputActionMap m_BaseMovement2D;
+    private List<IBaseMovement2DActions> m_BaseMovement2DActionsCallbackInterfaces = new List<IBaseMovement2DActions>();
+    private readonly InputAction m_BaseMovement2D_Jump;
+    private readonly InputAction m_BaseMovement2D_Move;
+    private readonly InputAction m_BaseMovement2D_GrowPole;
+    public struct BaseMovement2DActions
     {
         private @PlayerControls m_Wrapper;
-        public BaseMovementActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Jump => m_Wrapper.m_BaseMovement_Jump;
-        public InputAction @Move => m_Wrapper.m_BaseMovement_Move;
-        public InputAction @GrowPole => m_Wrapper.m_BaseMovement_GrowPole;
-        public InputActionMap Get() { return m_Wrapper.m_BaseMovement; }
+        public BaseMovement2DActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Jump => m_Wrapper.m_BaseMovement2D_Jump;
+        public InputAction @Move => m_Wrapper.m_BaseMovement2D_Move;
+        public InputAction @GrowPole => m_Wrapper.m_BaseMovement2D_GrowPole;
+        public InputActionMap Get() { return m_Wrapper.m_BaseMovement2D; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(BaseMovementActions set) { return set.Get(); }
-        public void AddCallbacks(IBaseMovementActions instance)
+        public static implicit operator InputActionMap(BaseMovement2DActions set) { return set.Get(); }
+        public void AddCallbacks(IBaseMovement2DActions instance)
         {
-            if (instance == null || m_Wrapper.m_BaseMovementActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_BaseMovementActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_BaseMovement2DActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_BaseMovement2DActionsCallbackInterfaces.Add(instance);
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -245,7 +373,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @GrowPole.canceled += instance.OnGrowPole;
         }
 
-        private void UnregisterCallbacks(IBaseMovementActions instance)
+        private void UnregisterCallbacks(IBaseMovement2DActions instance)
         {
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
@@ -258,22 +386,90 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @GrowPole.canceled -= instance.OnGrowPole;
         }
 
-        public void RemoveCallbacks(IBaseMovementActions instance)
+        public void RemoveCallbacks(IBaseMovement2DActions instance)
         {
-            if (m_Wrapper.m_BaseMovementActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_BaseMovement2DActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IBaseMovementActions instance)
+        public void SetCallbacks(IBaseMovement2DActions instance)
         {
-            foreach (var item in m_Wrapper.m_BaseMovementActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_BaseMovement2DActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_BaseMovementActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_BaseMovement2DActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public BaseMovementActions @BaseMovement => new BaseMovementActions(this);
-    public interface IBaseMovementActions
+    public BaseMovement2DActions @BaseMovement2D => new BaseMovement2DActions(this);
+
+    // BaseMovement3D
+    private readonly InputActionMap m_BaseMovement3D;
+    private List<IBaseMovement3DActions> m_BaseMovement3DActionsCallbackInterfaces = new List<IBaseMovement3DActions>();
+    private readonly InputAction m_BaseMovement3D_Jump;
+    private readonly InputAction m_BaseMovement3D_Move;
+    private readonly InputAction m_BaseMovement3D_GrowPole;
+    public struct BaseMovement3DActions
+    {
+        private @PlayerControls m_Wrapper;
+        public BaseMovement3DActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Jump => m_Wrapper.m_BaseMovement3D_Jump;
+        public InputAction @Move => m_Wrapper.m_BaseMovement3D_Move;
+        public InputAction @GrowPole => m_Wrapper.m_BaseMovement3D_GrowPole;
+        public InputActionMap Get() { return m_Wrapper.m_BaseMovement3D; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BaseMovement3DActions set) { return set.Get(); }
+        public void AddCallbacks(IBaseMovement3DActions instance)
+        {
+            if (instance == null || m_Wrapper.m_BaseMovement3DActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_BaseMovement3DActionsCallbackInterfaces.Add(instance);
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @GrowPole.started += instance.OnGrowPole;
+            @GrowPole.performed += instance.OnGrowPole;
+            @GrowPole.canceled += instance.OnGrowPole;
+        }
+
+        private void UnregisterCallbacks(IBaseMovement3DActions instance)
+        {
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @GrowPole.started -= instance.OnGrowPole;
+            @GrowPole.performed -= instance.OnGrowPole;
+            @GrowPole.canceled -= instance.OnGrowPole;
+        }
+
+        public void RemoveCallbacks(IBaseMovement3DActions instance)
+        {
+            if (m_Wrapper.m_BaseMovement3DActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IBaseMovement3DActions instance)
+        {
+            foreach (var item in m_Wrapper.m_BaseMovement3DActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_BaseMovement3DActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public BaseMovement3DActions @BaseMovement3D => new BaseMovement3DActions(this);
+    public interface IBaseMovement2DActions
+    {
+        void OnJump(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
+        void OnGrowPole(InputAction.CallbackContext context);
+    }
+    public interface IBaseMovement3DActions
     {
         void OnJump(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);

@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 335985321}
   - component: {fileID: 335985325}
   - component: {fileID: 335985327}
-  - component: {fileID: 335985326}
+  - component: {fileID: 335985328}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -364,21 +364,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &335985326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335985320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd39c185588ef9e4fb73a4c5eec8be0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  pole: {fileID: 0}
-  growPole: {x: 0, y: 0, z: 0}
 --- !u!114 &335985327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,9 +391,22 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: BaseMovement
+  m_DefaultActionMap: c76208a6-c965-4646-9c22-9e62cbe69a8f
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &335985328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335985320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0408ef6695b2e8a45a9682cd6a4eb10e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 15
 --- !u!1 &513291355
 GameObject:
   m_ObjectHideFlags: 0

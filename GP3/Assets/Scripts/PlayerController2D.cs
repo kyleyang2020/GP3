@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
  * Broadcast can do the same, but also on its children, besides that it's all the same
  */
 
-public class PlayerController : MonoBehaviour
+public class PlayerController2D : MonoBehaviour
 {
     private PlayerControls playerControls;
     private Rigidbody2D rb;
@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 ogPoleSize = new Vector3((float)0.5,2,1);
     private int maxGrow = 6;
     private int currentGrow = 0;
-    private int jump = 1;
-    private int currentjump = 0;
+    //private int jump = 1;
+    //private int currentjump = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
         pole.transform.localScale = ogPoleSize;
         currentGrow = 0;
-        currentjump = 1;
+        //currentjump = 1;
     }
 
     private void OnMove(InputValue inputValue)
