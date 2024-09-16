@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,12 +15,18 @@ public class PlayerController3D: MonoBehaviour
     private PlayerControls playerControls;
     private Rigidbody rb;
     [SerializeField] private float moveSpeed;
+    public List<Collider> ragdollParts = new List<Collider>();
 
     // Start is called before the first frame update
     void Start()
     {
         playerControls = new PlayerControls();
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void Awake()
+    {
+        SetRagdollParts();
     }
 
     // Update is called once per frame
@@ -37,5 +44,37 @@ public class PlayerController3D: MonoBehaviour
     private void OnMove(InputValue inputValue)
     {
         rb.velocity = inputValue.Get<Vector3>() * moveSpeed;
+    }
+
+    private void SetRagdollParts()
+    {
+        // get all colliders under this gameobject
+        Collider[] allColliders = this.gameObject.GetComponentsInChildren<Collider>();
+
+        // make each collider a trigger so it's no longer a physical object, will go through objects
+        // will know when other objects touch it
+        foreach (Collider collider in allColliders)
+        {
+            // only gets the ragdoll colliders and not the movement
+            if(collider.gameObject != this.gameObject)
+            {
+                collider.isTrigger = true;
+                ragdollParts.Add(collider);
+            }
+        }
+    }
+
+    private void TurnOnRagdoll()
+    {
+        rb.useGravity = false;
+        rb.velocity = Vector3.zero;
+        this.gameObject.GetComponent<BoxCollider>().enabled = false;
+
+        // get all the ragdoll parts, and turn them on
+        foreach(Collider c in ragdollParts)
+        {
+            c.isTrigger = false;
+            c.attachedRigidbody.velocity = Vector3.zero;
+        }
     }
 }
