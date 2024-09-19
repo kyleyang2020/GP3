@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 /*
  * Concerning the Player Input System, there are 4 ways to do behavior, Send Message, Broadcast Message, etc.
@@ -11,33 +12,79 @@ using UnityEngine.InputSystem;
 
 public class PlayerController2D : MonoBehaviour
 {
-    private PlayerControls playerControls;
+    [Header("References")]
+    private SpriteRenderer sr;
     private Rigidbody2D rb;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private GameObject pole;
-    [SerializeField] private Vector3 growPole;
-    private Vector3 ogPoleSize = new Vector3((float)0.5,2,1);
-    private int maxGrow = 6;
-    private int currentGrow = 0;
-    //private int jump = 1;
-    //private int currentjump = 0;
+    public PlayerControls playerControls;
 
-    // Start is called before the first frame update
+    [Header("Player Stats")]
+    [SerializeField] private float moveSpeed;
+
     void Start()
     {
         playerControls = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private bool IsGrounded()
     {
         return false;
+    }
+
+    // ------------------------------Unity Input System Functions------------------------------ //
+    private void OnMove(InputValue inputValue)
+    {
+        rb.velocity = inputValue.Get<Vector2>() * moveSpeed;
+    }
+
+    private void OnJump()
+    {
+        rb.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+    }
+
+    // --------------------------------Built-In Unity Functions-------------------------------- //
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+// wukong game
+/*
+    [SerializeField] private GameObject pole;
+    [SerializeField] private Vector3 growPole;
+    private Vector3 ogPoleSize = new Vector3((float)0.5, 2, 1);
+    private int maxGrow = 6;
+    private int currentGrow = 0;
+
+    // when e is pressed, grow pole
+    private void OnGrowPole()
+    {
+        if(currentGrow < maxGrow) 
+        {
+            pole.transform.localScale += growPole;
+            currentGrow++;
+        }
     }
 
     // jumps then resets the pole size
@@ -49,24 +96,78 @@ public class PlayerController2D : MonoBehaviour
         //currentjump = 1;
     }
 
-    private void OnMove(InputValue inputValue)
+*/
+
+// climbing 
+/*
+ * 
+ *     void Update()
     {
-        /*
-        if(currentGrow > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && currentCliff != null)
         {
-            rb.velocity = new Vector2(0, 0);
+            climbing = true;
         }
-        */
-        rb.velocity = inputValue.Get<Vector2>() * moveSpeed;
+        if (climbing && currentCliff == null)
+        {
+            climbing = false;
+        }
     }
 
-    private void OnGrowPole()
+ *  public void ClimbMove()
     {
-        if(currentGrow < maxGrow) 
+        Vector2 vel = Vector2.zero;
+        if (Input.GetKey(KeyCode.D))
         {
-            pole.transform.localScale += growPole;
-            currentGrow++;
+            vel.x = moveSpeed;
         }
-        
+        else if (Input.GetKey(KeyCode.A))
+        {
+            vel.x = -moveSpeed;
+        }
+        else
+        {
+            vel.x = 0;
+        }
+        rb.velocity = vel;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SetClimbing(false);
+        }
     }
-}
+
+    public void ClimbMove()
+    {
+        Vector2 vel = Vector2.zero;
+        if (Input.GetKey(KeyCode.D))
+        {
+            vel.x = moveSpeed;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            vel.x = -moveSpeed;
+        }
+        else
+        {
+            vel.x = 0;
+        }
+        rb.velocity = vel;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SetClimbing(false);
+        }
+    }
+
+//private int jump = 1;
+    //private int currentjump = 0;
+    public BoxCollider2D currentCliff;
+    public bool climbing;
+
+private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Cliff")
+        {
+            currentCliff = collision.GetComponent<BoxCollider2D>();
+        }
+    }
+*/
+

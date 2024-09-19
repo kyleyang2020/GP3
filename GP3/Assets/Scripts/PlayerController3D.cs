@@ -17,6 +17,10 @@ public class PlayerController3D: MonoBehaviour
     [SerializeField] private float moveSpeed;
     public List<Collider> ragdollParts = new List<Collider>();
 
+    // shooting balls
+    public GameObject firepoint;
+    public Rigidbody ball;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,5 +80,12 @@ public class PlayerController3D: MonoBehaviour
             c.isTrigger = false;
             c.attachedRigidbody.velocity = Vector3.zero;
         }
+    }
+    
+    private void OnShoot()
+    {
+        Rigidbody bullet;
+        bullet = Instantiate(ball, firepoint.transform.position, Quaternion.identity);
+        bullet.velocity = transform.TransformDirection(Vector3.forward * 100);
     }
 }
