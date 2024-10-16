@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b36948e6192b3ff49bd1f559876799c5, type: 3}
-  m_Name: Cabbage
+  m_Name: Bacon
   m_EditorClassIdentifier: 
-  dropSprite: {fileID: 21300000, guid: 5912528ca11ca4645a5f87a9306c72e5, type: 3}
-  dropName: Cabbage
-  dropChance: 40
+  dropSprite: {fileID: 21300000, guid: 2869289dd86898f4eb1059b61883c618, type: 3}
+  dropName: Bacon
+  dropChance: 100

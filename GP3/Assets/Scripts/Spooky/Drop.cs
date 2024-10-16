@@ -10,7 +10,7 @@ public class Drop : ScriptableObject
 {
     public Sprite dropSprite;
     public string dropName;
-    public int dropChance; // 1-100
+    public float dropChance; // 1-1000
 
     // allows usage of loot class in other scripts, creating loot
     public Drop(string dropName, int dropChance)

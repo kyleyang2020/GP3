@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropSprite: {fileID: 21300000, guid: be20a251a0717ca48bae8d9985f50a85, type: 3}
   dropName: Banana
-  dropChance: 10
+  dropChance: 80

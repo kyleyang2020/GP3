@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropSprite: {fileID: 21300000, guid: 70e804445395ffc478f3e096c61648e2, type: 3}
   dropName: Egg
-  dropChance: 10
+  dropChance: 20
